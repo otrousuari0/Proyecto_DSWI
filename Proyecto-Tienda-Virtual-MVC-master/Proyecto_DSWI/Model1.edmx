@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TIENDAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="IDE_CAT" />
+          </Key>
+          <Property Name="IDE_CAT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_CAT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="IDE_CLIE" />
+          </Key>
+          <Property Name="IDE_CLIE" Type="int" Nullable="false" />
+          <Property Name="NOM_CLI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APE_CLIE" Type="varchar" MaxLength="50" />
+          <Property Name="CORREO" Type="varchar" MaxLength="50" />
+          <Property Name="CONTRASEÑA" Type="varchar" MaxLength="50" />
+          <Property Name="DIR_CLIE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_DIS" Type="int" Nullable="false" />
+          <Property Name="FON_CLIE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DETALLE_PED">
+          <Key>
+            <PropertyRef Name="ID_PED" />
+          </Key>
+          <Property Name="ID_PED" Type="int" Nullable="false" />
+          <Property Name="ID_PROD" Type="int" Nullable="false" />
+          <Property Name="PREC_TOTAL" Type="money" Nullable="false" />
+          <Property Name="CANT_PED" Type="int" Nullable="false" />
+          <Property Name="DES_PED" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DISTRITO">
+          <Key>
+            <PropertyRef Name="ID_DIS" />
+          </Key>
+          <Property Name="ID_DIS" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="COD_EMP" />
+          </Key>
+          <Property Name="COD_EMP" Type="int" Nullable="false" />
+          <Property Name="NOM_EMP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APE_EMP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CEL_EMP" Type="int" Nullable="false" />
+          <Property Name="CORREO_EMP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIRECCION_EMP" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="SUELDO" Type="money" Nullable="false" />
+          <Property Name="CONTRASEÑA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID_DIS" Type="int" />
+          <Property Name="FOTO_EMP" Type="varchar" MaxLength="50" />
+          <Property Name="FEC_NAC_EMP" Type="date" />
+          <Property Name="ID_TIP" Type="int" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="ID_PEDIDO" />
+          </Key>
+          <Property Name="ID_PEDIDO" Type="int" Nullable="false" />
+          <Property Name="ID_EMP" Type="int" />
+          <Property Name="FEC_PEDIDO" Type="date" />
+          <Property Name="FIN_PEDIDO" Type="date" />
+          <Property Name="ENV_PEDIDO" Type="char" MaxLength="1" />
+          <Property Name="CANT_PEDIDO" Type="int" />
+          <Property Name="ID_CLIE" Type="int" />
+          <Property Name="DET_PEDIDO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_EMPLEADO" Type="int" Nullable="false" />
+          <Property Name="ID_DIS" Type="int" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PROD" />
+          </Key>
+          <Property Name="ID_PROD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_PRO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_TIP_PRO" Type="int" Nullable="false" />
+          <Property Name="STOCK_PROD" Type="int" Nullable="false" />
+          <Property Name="PRECIO" Type="money" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID_PROV" Type="int" Nullable="false" />
+          <Property Name="FOTO_PROD" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="IDE_PROV" />
+          </Key>
+          <Property Name="IDE_PROV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPRESA_PROV" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOM_PROV" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CARGO_PROV" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDE_DIS" Type="int" Nullable="false" />
+          <Property Name="FONO_PROV" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIP_EMP">
+          <Key>
+            <PropertyRef Name="ID_TIP" />
+          </Key>
+          <Property Name="ID_TIP" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usua">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="contraseña" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="contraseña" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CLIENTE_DISTRITO">
+          <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISTRITO">
+              <PropertyRef Name="ID_DIS" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_DIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_PED">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+          <End Role="DETALLE_PED" Type="Self.DETALLE_PED" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="ID_PEDIDO" />
+            </Principal>
+            <Dependent Role="DETALLE_PED">
+              <PropertyRef Name="ID_PED" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_PED_PRODUCTO">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="DETALLE_PED" Type="Self.DETALLE_PED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PROD" />
+            </Principal>
+            <Dependent Role="DETALLE_PED">
+              <PropertyRef Name="ID_PROD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_DISTRITO">
+          <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISTRITO">
+              <PropertyRef Name="ID_DIS" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_DIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_TIP_EMP">
+          <End Role="TIP_EMP" Type="Self.TIP_EMP" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_EMP">
+              <PropertyRef Name="ID_TIP" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_TIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="IDE_CLIE" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_CLIE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_EMPLEADO">
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="COD_EMP" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_CATEGORIA">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="IDE_CAT" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_TIP_PRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_PROVEEDOR">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="IDE_PROV" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_PROV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TIENDAModelStoreContainer">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETALLE_PED" EntityType="Self.DETALLE_PED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DISTRITO" EntityType="Self.DISTRITO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIP_EMP" EntityType="Self.TIP_EMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usua" EntityType="Self.Usua" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CLIENTE_DISTRITO" Association="Self.FK_CLIENTE_DISTRITO">
+            <End Role="DISTRITO" EntitySet="DISTRITO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_PED" Association="Self.FK_DETALLE_PED">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="DETALLE_PED" EntitySet="DETALLE_PED" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_PED_PRODUCTO" Association="Self.FK_DETALLE_PED_PRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLE_PED" EntitySet="DETALLE_PED" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_DISTRITO" Association="Self.FK_EMPLEADO_DISTRITO">
+            <End Role="DISTRITO" EntitySet="DISTRITO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_TIP_EMP" Association="Self.FK_EMPLEADO_TIP_EMP">
+            <End Role="TIP_EMP" EntitySet="TIP_EMP" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_CLIENTE" Association="Self.FK_PEDIDO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_EMPLEADO" Association="Self.FK_PEDIDO_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_CATEGORIA" Association="Self.FK_PRODUCTO_CATEGORIA">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_PROVEEDOR" Association="Self.FK_PRODUCTO_PROVEEDOR">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TIENDAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="IDE_CAT" />
+          </Key>
+          <Property Name="IDE_CAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_CAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PRODUCTO_CATEGORIA" FromRole="CATEGORIA" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="IDE_CLIE" />
+          </Key>
+          <Property Name="IDE_CLIE" Type="Int32" Nullable="false" />
+          <Property Name="NOM_CLI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APE_CLIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CONTRASEÑA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIR_CLIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_DIS" Type="Int32" Nullable="false" />
+          <Property Name="FON_CLIE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DISTRITO" Relationship="Self.FK_CLIENTE_DISTRITO" FromRole="CLIENTE" ToRole="DISTRITO" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_CLIENTE" FromRole="CLIENTE" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="DETALLE_PED">
+          <Key>
+            <PropertyRef Name="ID_PED" />
+          </Key>
+          <Property Name="ID_PED" Type="Int32" Nullable="false" />
+          <Property Name="ID_PROD" Type="Int32" Nullable="false" />
+          <Property Name="PREC_TOTAL" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CANT_PED" Type="Int32" Nullable="false" />
+          <Property Name="DES_PED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_DETALLE_PED" FromRole="DETALLE_PED" ToRole="PEDIDO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_DETALLE_PED_PRODUCTO" FromRole="DETALLE_PED" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="DISTRITO">
+          <Key>
+            <PropertyRef Name="ID_DIS" />
+          </Key>
+          <Property Name="ID_DIS" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_DISTRITO" FromRole="DISTRITO" ToRole="CLIENTE" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_EMPLEADO_DISTRITO" FromRole="DISTRITO" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="COD_EMP" />
+          </Key>
+          <Property Name="COD_EMP" Type="Int32" Nullable="false" />
+          <Property Name="NOM_EMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APE_EMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CEL_EMP" Type="Int32" Nullable="false" />
+          <Property Name="CORREO_EMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION_EMP" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUELDO" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CONTRASEÑA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_DIS" Type="Int32" />
+          <Property Name="FOTO_EMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FEC_NAC_EMP" Type="DateTime" Precision="0" />
+          <Property Name="ID_TIP" Type="Int32" />
+          <NavigationProperty Name="DISTRITO" Relationship="Self.FK_EMPLEADO_DISTRITO" FromRole="EMPLEADO" ToRole="DISTRITO" />
+          <NavigationProperty Name="TIP_EMP" Relationship="Self.FK_EMPLEADO_TIP_EMP" FromRole="EMPLEADO" ToRole="TIP_EMP" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_EMPLEADO" FromRole="EMPLEADO" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="ID_PEDIDO" />
+          </Key>
+          <Property Name="ID_PEDIDO" Type="Int32" Nullable="false" />
+          <Property Name="ID_EMP" Type="Int32" />
+          <Property Name="FEC_PEDIDO" Type="DateTime" Precision="0" />
+          <Property Name="FIN_PEDIDO" Type="DateTime" Precision="0" />
+          <Property Name="ENV_PEDIDO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CANT_PEDIDO" Type="Int32" />
+          <Property Name="ID_CLIE" Type="Int32" />
+          <Property Name="DET_PEDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_EMPLEADO" Type="Int32" Nullable="false" />
+          <Property Name="ID_DIS" Type="Int32" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_PEDIDO_CLIENTE" FromRole="PEDIDO" ToRole="CLIENTE" />
+          <NavigationProperty Name="DETALLE_PED" Relationship="Self.FK_DETALLE_PED" FromRole="PEDIDO" ToRole="DETALLE_PED" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_PEDIDO_EMPLEADO" FromRole="PEDIDO" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID_PROD" />
+          </Key>
+          <Property Name="ID_PROD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_PRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_TIP_PRO" Type="Int32" Nullable="false" />
+          <Property Name="STOCK_PROD" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PROV" Type="Int32" Nullable="false" />
+          <Property Name="FOTO_PROD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK_PRODUCTO_CATEGORIA" FromRole="PRODUCTO" ToRole="CATEGORIA" />
+          <NavigationProperty Name="DETALLE_PED" Relationship="Self.FK_DETALLE_PED_PRODUCTO" FromRole="PRODUCTO" ToRole="DETALLE_PED" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK_PRODUCTO_PROVEEDOR" FromRole="PRODUCTO" ToRole="PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="PROVEEDOR">
+          <Key>
+            <PropertyRef Name="IDE_PROV" />
+          </Key>
+          <Property Name="IDE_PROV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPRESA_PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOM_PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CARGO_PROV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDE_DIS" Type="Int32" Nullable="false" />
+          <Property Name="FONO_PROV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PRODUCTO_PROVEEDOR" FromRole="PROVEEDOR" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="TIP_EMP">
+          <Key>
+            <PropertyRef Name="ID_TIP" />
+          </Key>
+          <Property Name="ID_TIP" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_EMPLEADO_TIP_EMP" FromRole="TIP_EMP" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="Usua">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_PRODUCTO_CATEGORIA">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="IDE_CAT" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_TIP_PRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_DISTRITO">
+          <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISTRITO">
+              <PropertyRef Name="ID_DIS" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_DIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="IDE_CLIE" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_CLIE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_PED">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+          <End Role="DETALLE_PED" Type="Self.DETALLE_PED" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="ID_PEDIDO" />
+            </Principal>
+            <Dependent Role="DETALLE_PED">
+              <PropertyRef Name="ID_PED" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_PED_PRODUCTO">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="DETALLE_PED" Type="Self.DETALLE_PED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="ID_PROD" />
+            </Principal>
+            <Dependent Role="DETALLE_PED">
+              <PropertyRef Name="ID_PROD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_DISTRITO">
+          <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISTRITO">
+              <PropertyRef Name="ID_DIS" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_DIS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_TIP_EMP">
+          <End Role="TIP_EMP" Type="Self.TIP_EMP" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIP_EMP">
+              <PropertyRef Name="ID_TIP" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="ID_TIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_EMPLEADO">
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="COD_EMP" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_PROVEEDOR">
+          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVEEDOR">
+              <PropertyRef Name="IDE_PROV" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_PROV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TIENDAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="DETALLE_PED" EntityType="Self.DETALLE_PED" />
+          <EntitySet Name="DISTRITO" EntityType="Self.DISTRITO" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
+          <EntitySet Name="TIP_EMP" EntityType="Self.TIP_EMP" />
+          <EntitySet Name="Usua" EntityType="Self.Usua" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK_PRODUCTO_CATEGORIA" Association="Self.FK_PRODUCTO_CATEGORIA">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_DISTRITO" Association="Self.FK_CLIENTE_DISTRITO">
+            <End Role="DISTRITO" EntitySet="DISTRITO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_CLIENTE" Association="Self.FK_PEDIDO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_PED" Association="Self.FK_DETALLE_PED">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="DETALLE_PED" EntitySet="DETALLE_PED" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_PED_PRODUCTO" Association="Self.FK_DETALLE_PED_PRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLE_PED" EntitySet="DETALLE_PED" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_DISTRITO" Association="Self.FK_EMPLEADO_DISTRITO">
+            <End Role="DISTRITO" EntitySet="DISTRITO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_TIP_EMP" Association="Self.FK_EMPLEADO_TIP_EMP">
+            <End Role="TIP_EMP" EntitySet="TIP_EMP" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_EMPLEADO" Association="Self.FK_PEDIDO_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_PROVEEDOR" Association="Self.FK_PRODUCTO_PROVEEDOR">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TIENDAModelStoreContainer" CdmEntityContainer="TIENDAEntities">
+          <EntitySetMapping Name="CATEGORIA">
+            <EntityTypeMapping TypeName="TIENDAModel.CATEGORIA">
+              <MappingFragment StoreEntitySet="CATEGORIA">
+                <ScalarProperty Name="IDE_CAT" ColumnName="IDE_CAT" />
+                <ScalarProperty Name="NOM_CAT" ColumnName="NOM_CAT" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="TIENDAModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="IDE_CLIE" ColumnName="IDE_CLIE" />
+                <ScalarProperty Name="NOM_CLI" ColumnName="NOM_CLI" />
+                <ScalarProperty Name="APE_CLIE" ColumnName="APE_CLIE" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+                <ScalarProperty Name="DIR_CLIE" ColumnName="DIR_CLIE" />
+                <ScalarProperty Name="ID_DIS" ColumnName="ID_DIS" />
+                <ScalarProperty Name="FON_CLIE" ColumnName="FON_CLIE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_PED">
+            <EntityTypeMapping TypeName="TIENDAModel.DETALLE_PED">
+              <MappingFragment StoreEntitySet="DETALLE_PED">
+                <ScalarProperty Name="ID_PED" ColumnName="ID_PED" />
+                <ScalarProperty Name="ID_PROD" ColumnName="ID_PROD" />
+                <ScalarProperty Name="PREC_TOTAL" ColumnName="PREC_TOTAL" />
+                <ScalarProperty Name="CANT_PED" ColumnName="CANT_PED" />
+                <ScalarProperty Name="DES_PED" ColumnName="DES_PED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISTRITO">
+            <EntityTypeMapping TypeName="TIENDAModel.DISTRITO">
+              <MappingFragment StoreEntitySet="DISTRITO">
+                <ScalarProperty Name="ID_DIS" ColumnName="ID_DIS" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADO">
+            <EntityTypeMapping TypeName="TIENDAModel.EMPLEADO">
+              <MappingFragment StoreEntitySet="EMPLEADO">
+                <ScalarProperty Name="COD_EMP" ColumnName="COD_EMP" />
+                <ScalarProperty Name="NOM_EMP" ColumnName="NOM_EMP" />
+                <ScalarProperty Name="APE_EMP" ColumnName="APE_EMP" />
+                <ScalarProperty Name="CEL_EMP" ColumnName="CEL_EMP" />
+                <ScalarProperty Name="CORREO_EMP" ColumnName="CORREO_EMP" />
+                <ScalarProperty Name="DIRECCION_EMP" ColumnName="DIRECCION_EMP" />
+                <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+                <ScalarProperty Name="ID_DIS" ColumnName="ID_DIS" />
+                <ScalarProperty Name="FOTO_EMP" ColumnName="FOTO_EMP" />
+                <ScalarProperty Name="FEC_NAC_EMP" ColumnName="FEC_NAC_EMP" />
+                <ScalarProperty Name="ID_TIP" ColumnName="ID_TIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO">
+            <EntityTypeMapping TypeName="TIENDAModel.PEDIDO">
+              <MappingFragment StoreEntitySet="PEDIDO">
+                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="FEC_PEDIDO" ColumnName="FEC_PEDIDO" />
+                <ScalarProperty Name="FIN_PEDIDO" ColumnName="FIN_PEDIDO" />
+                <ScalarProperty Name="ENV_PEDIDO" ColumnName="ENV_PEDIDO" />
+                <ScalarProperty Name="CANT_PEDIDO" ColumnName="CANT_PEDIDO" />
+                <ScalarProperty Name="ID_CLIE" ColumnName="ID_CLIE" />
+                <ScalarProperty Name="DET_PEDIDO" ColumnName="DET_PEDIDO" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="ID_DIS" ColumnName="ID_DIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="TIENDAModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="ID_PROD" ColumnName="ID_PROD" />
+                <ScalarProperty Name="NOM_PRO" ColumnName="NOM_PRO" />
+                <ScalarProperty Name="ID_TIP_PRO" ColumnName="ID_TIP_PRO" />
+                <ScalarProperty Name="STOCK_PROD" ColumnName="STOCK_PROD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_PROV" ColumnName="ID_PROV" />
+                <ScalarProperty Name="FOTO_PROD" ColumnName="FOTO_PROD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDOR">
+            <EntityTypeMapping TypeName="TIENDAModel.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="IDE_PROV" ColumnName="IDE_PROV" />
+                <ScalarProperty Name="EMPRESA_PROV" ColumnName="EMPRESA_PROV" />
+                <ScalarProperty Name="NOM_PROV" ColumnName="NOM_PROV" />
+                <ScalarProperty Name="CARGO_PROV" ColumnName="CARGO_PROV" />
+                <ScalarProperty Name="IDE_DIS" ColumnName="IDE_DIS" />
+                <ScalarProperty Name="FONO_PROV" ColumnName="FONO_PROV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIP_EMP">
+            <EntityTypeMapping TypeName="TIENDAModel.TIP_EMP">
+              <MappingFragment StoreEntitySet="TIP_EMP">
+                <ScalarProperty Name="ID_TIP" ColumnName="ID_TIP" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usua">
+            <EntityTypeMapping TypeName="TIENDAModel.Usua">
+              <MappingFragment StoreEntitySet="Usua">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="TIENDAModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

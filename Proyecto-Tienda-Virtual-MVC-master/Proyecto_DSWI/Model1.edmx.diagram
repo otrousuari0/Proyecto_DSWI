@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e757c1ca660644ccb4d69cbe6026ec69" Name="Diagram1">
+        <EntityTypeShape EntityType="TIENDAModel.CATEGORIA" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.CLIENTE" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.DETALLE_PED" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.DISTRITO" Width="1.5" PointX="1.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.EMPLEADO" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.PEDIDO" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.PRODUCTO" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.PROVEEDOR" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.TIP_EMP" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.Usua" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TIENDAModel.USUARIO" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="TIENDAModel.FK_PRODUCTO_CATEGORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_CLIENTE_DISTRITO" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_PEDIDO_CLIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_DETALLE_PED" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_DETALLE_PED_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_EMPLEADO_DISTRITO" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_EMPLEADO_TIP_EMP" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_PEDIDO_EMPLEADO" ManuallyRouted="false" />
+        <AssociationConnector Association="TIENDAModel.FK_PRODUCTO_PROVEEDOR" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
